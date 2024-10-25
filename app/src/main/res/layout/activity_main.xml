@@ -5,23 +5,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_wood"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/customToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:elevation="4dp" />
-
+        <!-- toolbar -->
+        <include
+            android:id="@+id/contentToolbar"
+            layout="@layout/toolbar" />
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_marginTop="100dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
             app:srcCompat="@drawable/botella" />
 
         <Button
@@ -33,7 +28,7 @@
             android:background="@color/carrot_orange"
             android:text="Presióname"
             android:textColor="@android:color/white"
-            android:visibility="visible" />
+            android:visibility="visible"/>
 
     </LinearLayout>
 </layout>

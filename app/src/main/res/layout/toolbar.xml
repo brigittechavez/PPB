@@ -1,0 +1,66 @@
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/toolbar_background"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/star_outline"
+            android:clickable="true"
+            app:tint="@color/orange"
+            android:contentDescription="Icono de estrella"/>
+
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="50dp"
+            android:src="@drawable/volume_high"
+            app:tint="@color/orange"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:contentDescription="Icono de volumen"/>
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="50dp"
+            android:src="@drawable/controller"
+            app:tint="@color/orange"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:contentDescription="Icono de controlador"/>
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_circle"
+            app:tint="@color/orange"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:contentDescription="Icono de agregar"/>
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="50dp"
+            android:src="@drawable/share_variant"
+            app:tint="@color/orange"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:contentDescription="Icono de compartir"/>
+
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.Toolbar>
