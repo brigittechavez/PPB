@@ -21,14 +21,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-
-        // Inicializar el sonido de fondo (opcional)
-        // val mediaPlayer = MediaPlayer.create(this, R.raw.your_sound_file)
-        // mediaPlayer.start()
-
-        // Iniciar el contador regresivo
-        startCountdown()
-
         // Configurar el botón "Presióname" para que parpadee
         makeButtonBlink(binding.pressMeButton)
     }
@@ -38,20 +30,6 @@ class MainActivity : AppCompatActivity() {
         finishAffinity() // Cierra todas las actividades y sale de la aplicación
     }
 
-    private fun startCountdown() {
-        binding.countdownText.text = "3"
-
-        countdownTimer = object : CountDownTimer(3000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                val secondsLeft = (millisUntilFinished / 1000).toInt()
-                binding.countdownText.text = secondsLeft.toString()
-            }
-
-            override fun onFinish() {
-                binding.countdownText.text = "0"
-            }
-        }.start()
-    }
 
     private fun makeButtonBlink(button: Button) {
         val animator = ObjectAnimator.ofFloat(button, "alpha", 0f, 1f)
