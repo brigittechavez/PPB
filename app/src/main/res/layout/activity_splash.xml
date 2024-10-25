@@ -1,22 +1,39 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/black">
 
-        <ImageView
-            android:id="@+id/bottleIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                app:lottie_imageAssetsFolder="assets"
+                app:lottie_fileName="splashAnimation.json"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"
+                />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/bottleIcon"
-            android:layout_centerHorizontal="true"
-            android:text="pico botella"
-            android:textColor="@android:color/holo_orange_dark" />
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:layout_marginTop="10dp"
+                android:text="@string/app_splash"
+                android:textColor="@color/carrot_orange"
+                android:fontFamily="@font/splash_font"
+                />
+
+        </LinearLayout>
+        </RelativeLayout>
 </layout>
