@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">equipoTres</string>
     <string name="app_splash">Pico Botella</string>
+    <string name="bt_presioname">Presióname</string>
 </resources>
