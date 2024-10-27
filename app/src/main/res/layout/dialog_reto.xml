@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Agregar reto"
+        android:text="@string/addRetos"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black" />
@@ -19,7 +19,7 @@
         android:id="@+id/dialog_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Escriba el reto"
+        android:hint="@string/readReto"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
         android:backgroundTint="@color/carrot_orange"

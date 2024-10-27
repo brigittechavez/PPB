@@ -3,4 +3,7 @@
     <string name="app_splash">Pico Botella</string>
     <string name="bt_presioname">Presióname</string>
     <string name="retos">Retos</string>
+    <string name="addRetos">Agregar reto</string>
+    <string name="readReto">Escriba el reto</string>
+
 </resources>
