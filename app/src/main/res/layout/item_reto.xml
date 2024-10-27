@@ -41,6 +41,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="4dp"
-        android:text="Descripción del reto"
         android:textColor="@android:color/black" />
 </LinearLayout>
