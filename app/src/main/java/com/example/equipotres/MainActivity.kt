@@ -2,17 +2,20 @@ package com.example.equipotres
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.example.equipotres.databinding.ActivityMainBinding
+import com.example.equipotres.ui.retos.RetosActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +38,14 @@ class MainActivity : AppCompatActivity() {
 
         // Configurar el botón "Presióname" para que parpadee
         makeButtonBlink(binding.bButton)
+
+        // funcion para abrir la ventana de retos
+        val btnAdd = findViewById<ImageButton>(R.id.btn_add)
+        btnAdd.setOnClickListener {
+            mediaPlayer.pause()
+            val intent = Intent(this, RetosActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onBackPressed() {

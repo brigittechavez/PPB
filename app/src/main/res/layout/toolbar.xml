@@ -44,12 +44,12 @@
 
         <ImageView
             android:layout_width="64dp"
-            android:layout_height="50dp"
-            android:src="@drawable/plus_circle"
-            app:tint="@color/carrot_orange"
-            android:clickable="true"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:contentDescription="Icono de agregar"/>
+            android:clickable="true"
+            android:contentDescription="Icono de agregar"
+            android:src="@drawable/plus_circle"
+            app:tint="@color/carrot_orange" />
 
         <ImageView
             android:layout_width="64dp"
