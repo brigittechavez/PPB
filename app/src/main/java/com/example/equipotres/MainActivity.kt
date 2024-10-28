@@ -16,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.example.equipotres.databinding.ActivityMainBinding
 import com.example.equipotres.ui.retos.RetosActivity
+import android.net.Uri
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        setupToolbar() // toolbar
 
         mediaPlayer = MediaPlayer.create(this, R.raw.sound_main)
         mediaPlayer.isLooping = true // Hace que el sonido se repita en bucle
@@ -44,6 +47,19 @@ class MainActivity : AppCompatActivity() {
         btnAdd.setOnClickListener {
             mediaPlayer.pause()
             val intent = Intent(this, RetosActivity::class.java)
+            startActivity(intent)
+        }
+
+    }
+
+
+    private fun setupToolbar(){
+        val toolbar = binding.contentToolbar.toolbar
+        setSupportActionBar(toolbar)
+        val btnStar = toolbar.findViewById<ImageButton>(R.id.btn_star)
+        btnStar.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse("https://play.google.com/store/apps/details?id=com.nequi.MobileApp&hl=es_419&gl=es")
             startActivity(intent)
         }
     }
@@ -68,6 +84,8 @@ class MainActivity : AppCompatActivity() {
             }
         }.start()
     }
+
+
 
     private fun makeButtonBlink(button: Button) {
         val animator = ObjectAnimator.ofFloat(button, "alpha", 0f, 1f)
