@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2D2D2D">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#000000"
+        android:theme="@style/Theme.AppCompat.NoActionBar"/>
+
+    <TextView
+        android:id="@+id/text_title_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Cómo se juega?"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/text_description_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Los jugadores forman un círculo y en el centro colocan el dispositivo móvil..."
+        android:textColor="#FFFFFF"
+        android:layout_below="@id/text_title_1"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/text_title_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Quién gana?"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_below="@id/text_description_1"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/text_description_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gana el último jugador que no abandone el juego."
+        android:textColor="#FFFFFF"
+        android:layout_below="@id/text_title_2"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Aquí puedes añadir tu animación, por ejemplo, un ImageView con la animación que desees -->
+
+</RelativeLayout>
