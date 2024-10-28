@@ -30,9 +30,7 @@
             android:name=".ui.retos.RetosActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
-<!--        <activity-->
-<!--            android:name=".InstruccionesActivity"-->
-<!--            android:theme="@style/Theme.AppCompat.NoActionBar" />-->
+
 
     </application>
 
