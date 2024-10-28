@@ -50,6 +50,14 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RetosActivity::class.java)
             startActivity(intent)
         }
+        // funcion para abrir la ventana de instrucciones
+        // descomentar cuando se haga las instrucciones
+//        val btnGame = findViewById<ImageButton>(R.id.btn_game)
+//        btnGame.setOnClickListener {
+//            mediaPlayer.pause() // Pausar música al abrir instrucciones
+//            val intent = Intent(this, InstruccionesActivity::class.java)
+//            startActivity(intent)
+//        }
     }
 
 
