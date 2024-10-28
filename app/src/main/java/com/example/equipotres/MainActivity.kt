@@ -24,13 +24,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var countdownTimer: CountDownTimer
     private lateinit var mediaPlayer: MediaPlayer
-
+    private var isAudioPlaying = true // Estado inicial del audio
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        setupToolbar() // toolbar
+        setupToolbar() // configuracion del toolbar
+        setupAudioButton() // Configurar el boton de audio
 
         mediaPlayer = MediaPlayer.create(this, R.raw.sound_main)
         mediaPlayer.isLooping = true // Hace que el sonido se repita en bucle
@@ -49,7 +50,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RetosActivity::class.java)
             startActivity(intent)
         }
-
     }
 
 
@@ -61,6 +61,24 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse("https://play.google.com/store/apps/details?id=com.nequi.MobileApp&hl=es_419&gl=es")
             startActivity(intent)
+        }
+    }
+
+    private fun setupAudioButton() {
+        val audioButton = binding.contentToolbar.toolbar.findViewById<ImageButton>(R.id.btn_audio_on)
+
+        audioButton.setOnClickListener {
+            if (isAudioPlaying) {
+                // Si la música está sonando, pausar la música y cambiar el ícono
+                mediaPlayer.pause()
+                audioButton.setImageResource(R.drawable.ico_volume_off) // Cambiar a ícono de apagado
+                isAudioPlaying = false
+            } else {
+                // Si la música está pausada, reiniciarla y cambiar el ícono
+                mediaPlayer.start()
+                audioButton.setImageResource(R.drawable.ico_volume_on) // Cambiar a ícono de encendido
+                isAudioPlaying = true
+            }
         }
     }
 
@@ -84,7 +102,6 @@ class MainActivity : AppCompatActivity() {
             }
         }.start()
     }
-
 
 
     private fun makeButtonBlink(button: Button) {
