@@ -5,5 +5,7 @@
     <string name="retos">Retos</string>
     <string name="addRetos">Agregar reto</string>
     <string name="readReto">Escriba el reto</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
