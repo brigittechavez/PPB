@@ -17,6 +17,12 @@ import androidx.databinding.DataBindingUtil
 import com.example.equipotres.databinding.ActivityMainBinding
 import com.example.equipotres.ui.retos.RetosActivity
 import android.net.Uri
+import android.widget.Toast
+import androidx.core.animation.addListener
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
+import com.example.equipotres.view.RetoDialogFragment
+import kotlin.random.Random
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,20 +31,25 @@ class MainActivity : AppCompatActivity() {
     private lateinit var countdownTimer: CountDownTimer
     private lateinit var mediaPlayer: MediaPlayer
     private var isAudioPlaying = true // Estado inicial del audio
-
+    private lateinit var spinSound: MediaPlayer
+    private var lastRotation = 0f
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setupToolbar() // configuracion del toolbar
         setupAudioButton() // Configurar el boton de audio
+        setupBottleRotation()
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.sound_main)
-        mediaPlayer.isLooping = true // Hace que el sonido se repita en bucle
-        mediaPlayer.start() // Inicia el sonido de fondo
+        mediaPlayer = MediaPlayer.create(this, R.raw.sound_main).apply {
+            isLooping = true
+            start()
+        }
 
+        // Inicializar el sonido de giro de la botella
+        spinSound = MediaPlayer.create(this, R.raw.spinning_bottle)
         // Iniciar el contador regresivo
-        startCountdown()
+       // startCountdown()
 
         // Configurar el botón "Presióname" para que parpadee
         makeButtonBlink(binding.bButton)
@@ -49,6 +60,10 @@ class MainActivity : AppCompatActivity() {
             mediaPlayer.pause()
             val intent = Intent(this, RetosActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.bButton.setOnClickListener {
+            startBottleSpin()
         }
         // funcion para abrir la ventana de instrucciones
 //        val btnGame = findViewById<ImageButton>(R.id.btn_game)
@@ -62,6 +77,54 @@ class MainActivity : AppCompatActivity() {
 //        }
     }
 
+    private fun setupBottleRotation() {
+
+        binding.imgBotella.viewTreeObserver.addOnGlobalLayoutListener {
+
+            binding.imgBotella.rotation = lastRotation
+        }
+    }
+
+    private fun startBottleSpin() {
+        binding.bButton.isInvisible  = true
+
+        binding.imgBotella.pivotX = binding.imgBotella.width / 2f
+        binding.imgBotella.pivotY = binding.imgBotella.height / 2f
+
+        if (isAudioPlaying) {
+            mediaPlayer.pause()
+        }
+
+        val duration = 4000L // 3 segundos
+        val randomAngle = lastRotation + Random.nextInt(720, 1440)
+        val rotationAnimator = ObjectAnimator.ofFloat(binding.imgBotella, "rotation", lastRotation, randomAngle)
+
+        rotationAnimator.duration = duration
+        rotationAnimator.start()
+
+        spinSound.start()
+
+        rotationAnimator.addListener(onEnd = {
+            spinSound.pause()
+            spinSound.seekTo(0)
+            lastRotation = randomAngle % 360
+            startCountdown()
+        })
+    }
+
+
+
+    private fun showChallengeDialog() {
+        val dialog = RetoDialogFragment()
+
+        dialog.onDismissListener = {
+            if (isAudioPlaying) {
+                mediaPlayer.start()
+            }
+        }
+
+        dialog.show(supportFragmentManager, "RetoDialogFragment")
+    }
 
     private fun setupToolbar(){
         val toolbar = binding.contentToolbar.toolbar
@@ -98,9 +161,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startCountdown() {
+        binding.contador.isVisible = true
         binding.contador.text = "3"
 
-        countdownTimer = object : CountDownTimer(3000, 1000) {
+        countdownTimer = object : CountDownTimer(4000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsLeft = (millisUntilFinished / 1000).toInt()
                 binding.contador.text = secondsLeft.toString()
@@ -108,7 +172,9 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.contador.text = "0"
-                binding.contador.visibility = View.GONE
+                binding.contador.isVisible = false
+                showChallengeDialog()
+                binding.bButton.isVisible = true
             }
         }.start()
     }
